@@ -1,0 +1,2984 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>process_user_agent_string</name>
+    <description/>
+    <extended_description>***** BEGIN LICENSE BLOCK *****
+Version: MPL 1.1&#47;GPL 2.0&#47;LGPL 2.1
+
+The contents of this file are subject to the Mozilla Public License Version
+1.1 (the &quot;License&quot;); you may not use this file except in compliance with
+the License. You may obtain a copy of the License at
+http:&#47;&#47;www.mozilla.org&#47;MPL&#47;
+
+Software distributed under the License is distributed on an &quot;AS IS&quot; basis,
+WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+for the specific language governing rights and limitations under the
+License.
+
+The Original Code is Mozilla Corporation Metrics ETL for Mango
+
+The Initial Developer of the Original Code is
+Daniel Einspanjer deinspanjer@mozilla.com
+Portions created by the Initial Developer are Copyright (C) 2011
+the Initial Developer. All Rights Reserved.
+
+Contributor(s):
+
+Alternatively, the contents of this file may be used under the terms of
+either the GNU General Public License Version 2 or later (the &quot;GPL&quot;), or
+the GNU Lesser General Public License Version 2.1 or later (the &quot;LGPL&quot;),
+in which case the provisions of the GPL or the LGPL are applicable instead
+of those above. If you wish to allow use of your version of this file only
+under the terms of either the GPL or the LGPL, and not to allow others to
+use your version of this file under the terms of the MPL, indicate your
+decision by deleting the provisions above and replace them with the notice
+and other provisions required by the LGPL or the GPL. If you do not delete
+the provisions above, a recipient may use your version of this file under
+the terms of any one of the MPL, the GPL or the LGPL.
+
+***** END LICENSE BLOCK *****
+</extended_description>
+    <trans_version/>
+    <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
+    <directory>&#47;</directory>
+    <parameters>
+        <parameter>
+            <name>UA_FILE</name>
+            <default_value>mozilla5</default_value>
+            <description/>
+        </parameter>
+    </parameters>
+    <log>
+<trans-log-table><connection/>
+<schema/>
+<table/>
+<size_limit_lines/>
+<interval/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>N</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>N</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></trans-log-table>
+<perf-log-table><connection/>
+<schema/>
+<table/>
+<interval/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>SEQ_NR</id><enabled>Y</enabled><name>SEQ_NR</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>INPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>INPUT_BUFFER_ROWS</name></field><field><id>OUTPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>OUTPUT_BUFFER_ROWS</name></field></perf-log-table>
+<channel-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>LOGGING_OBJECT_TYPE</id><enabled>Y</enabled><name>LOGGING_OBJECT_TYPE</name></field><field><id>OBJECT_NAME</id><enabled>Y</enabled><name>OBJECT_NAME</name></field><field><id>OBJECT_COPY</id><enabled>Y</enabled><name>OBJECT_COPY</name></field><field><id>REPOSITORY_DIRECTORY</id><enabled>Y</enabled><name>REPOSITORY_DIRECTORY</name></field><field><id>FILENAME</id><enabled>Y</enabled><name>FILENAME</name></field><field><id>OBJECT_ID</id><enabled>Y</enabled><name>OBJECT_ID</name></field><field><id>OBJECT_REVISION</id><enabled>Y</enabled><name>OBJECT_REVISION</name></field><field><id>PARENT_CHANNEL_ID</id><enabled>Y</enabled><name>PARENT_CHANNEL_ID</name></field><field><id>ROOT_CHANNEL_ID</id><enabled>Y</enabled><name>ROOT_CHANNEL_ID</name></field></channel-log-table>
+<step-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></step-log-table>
+    </log>
+    <maxdate>
+      <connection/>
+      <table/>
+      <field/>
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>1000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file/>
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit/>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+  <created_user/>
+  <created_date>2010&#47;10&#47;15 16:56:04.156</created_date>
+  <modified_user>-</modified_user>
+  <modified_date>2010&#47;10&#47;01 17:05:36.781</modified_date>
+  </info>
+  <notepads>
+    <notepad>
+      <note>split the UAs into tokens                                                                                </note>
+      <xloc>473</xloc>
+      <yloc>61</yloc>
+      <width>467</width>
+      <heigth>23</heigth>
+      <fontname>Microsoft Sans Serif</fontname>
+      <fontsize>8</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>255</fontcolorred>
+      <fontcolorgreen>255</fontcolorgreen>
+      <fontcolorblue>255</fontcolorblue>
+      <backgroundcolorred>64</backgroundcolorred>
+      <backgroundcolorgreen>0</backgroundcolorgreen>
+      <backgroundcolorblue>64</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>parse the UA  looking for platform, browser, etc.                                                                             </note>
+      <xloc>478</xloc>
+      <yloc>189</yloc>
+      <width>595</width>
+      <heigth>23</heigth>
+      <fontname>Microsoft Sans Serif</fontname>
+      <fontsize>8</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>255</fontcolorred>
+      <fontcolorgreen>255</fontcolorgreen>
+      <fontcolorblue>255</fontcolorblue>
+      <backgroundcolorred>64</backgroundcolorred>
+      <backgroundcolorgreen>0</backgroundcolorgreen>
+      <backgroundcolorblue>64</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Results!                </note>
+      <xloc>1047</xloc>
+      <yloc>1442</yloc>
+      <width>119</width>
+      <heigth>23</heigth>
+      <fontname>Microsoft Sans Serif</fontname>
+      <fontsize>8</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>255</fontcolorred>
+      <fontcolorgreen>255</fontcolorgreen>
+      <fontcolorblue>255</fontcolorblue>
+      <backgroundcolorred>64</backgroundcolorred>
+      <backgroundcolorgreen>0</backgroundcolorgreen>
+      <backgroundcolorblue>64</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>
+
+IMPORTANT! Run set_regexp.ktr first!
+
+</note>
+      <xloc>240</xloc>
+      <yloc>11</yloc>
+      <width>220</width>
+      <heigth>75</heigth>
+      <fontname>Microsoft Sans Serif</fontname>
+      <fontsize>8</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>255</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>
+
+
+
+B
+R
+O
+W
+S
+E
+R
+
+
+
+
+
+
+</note>
+      <xloc>461</xloc>
+      <yloc>431</yloc>
+      <width>26</width>
+      <heigth>244</heigth>
+      <fontname>Microsoft Sans Serif</fontname>
+      <fontsize>8</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>O
+P
+E
+R
+A
+T
+I
+N
+G
+
+S
+Y
+S
+T
+E
+M</note>
+      <xloc>467</xloc>
+      <yloc>760</yloc>
+      <width>24</width>
+      <heigth>218</heigth>
+      <fontname>Microsoft Sans Serif</fontname>
+      <fontsize>8</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>
+L
+O
+C
+A
+L
+E
+
+
+
+</note>
+      <xloc>487</xloc>
+      <yloc>1279</yloc>
+      <width>20</width>
+      <heigth>153</heigth>
+      <fontname>Microsoft Sans Serif</fontname>
+      <fontsize>8</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>P
+L
+A
+T
+F
+O
+R
+M</note>
+      <xloc>466</xloc>
+      <yloc>1053</yloc>
+      <width>24</width>
+      <heigth>114</heigth>
+      <fontname>Microsoft Sans Serif</fontname>
+      <fontsize>8</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>OUTPUT FIELDS
+
+os_category
+os
+platform
+browser_category
+browser_name
+browser_version
+engine_1
+engine_2
+locale
+
+</note>
+      <xloc>1053</xloc>
+      <yloc>1576</yloc>
+      <width>112</width>
+      <heigth>179</heigth>
+      <fontname>Microsoft Sans Serif</fontname>
+      <fontsize>8</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>S
+P
+I
+D
+E
+R
+S
+,
+
+E
+T
+C
+.</note>
+      <xloc>685</xloc>
+      <yloc>1451</yloc>
+      <width>24</width>
+      <heigth>179</heigth>
+      <fontname>Microsoft Sans Serif</fontname>
+      <fontsize>8</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>The code in the UDJC is a workaround needed because of a a bug in Kettle 4.1.
+A fix to the FieldHelper was commited in 4.2 trunk.
+Eventually, a reevaluation will have to be made.
+2010-12-03</note>
+      <xloc>1</xloc>
+      <yloc>171</yloc>
+      <width>458</width>
+      <heigth>62</heigth>
+      <fontname>Microsoft Sans Serif</fontname>
+      <fontsize>8</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+  </notepads>
+  <order>
+  <hop> <from>locale list</from><to>lk locale</to><enabled>Y</enabled> </hop>  <hop> <from>browser</from><to>browser_name to lower</to><enabled>Y</enabled> </hop>  <hop> <from>os list</from><to>ua_os_name to lower</to><enabled>Y</enabled> </hop>  <hop> <from>ua_os_name to lower</from><to>lk os name &amp; category</to><enabled>Y</enabled> </hop>  <hop> <from>os_version list</from><to>lk replacements</to><enabled>Y</enabled> </hop>  <hop> <from>Mapping input specification</from><to>Filter empty rows</to><enabled>Y</enabled> </hop>  <hop> <from>Filter empty rows</from><to>removing non-printable</to><enabled>Y</enabled> </hop>  <hop> <from>removing non-printable</from><to>Token separator</to><enabled>Y</enabled> </hop>  <hop> <from>lk replacements</from><to>os</to><enabled>Y</enabled> </hop>  <hop> <from>lk locale</from><to>locale</to><enabled>Y</enabled> </hop>  <hop> <from>Token separator</from><to>&quot;un-split&quot; (custom)</to><enabled>Y</enabled> </hop>  <hop> <from>parse browser, engine, platform, os, locale</from><to>lk browser category</to><enabled>Y</enabled> </hop>  <hop> <from>browser_name to lower</from><to>lk browser category</to><enabled>Y</enabled> </hop>  <hop> <from>locale</from><to>Select values</to><enabled>N</enabled> </hop>  <hop> <from>lk os name &amp; category</from><to>lk replacements</to><enabled>Y</enabled> </hop>  <hop> <from>&quot;un-split&quot; (custom)</from><to>preallocate output rows</to><enabled>Y</enabled> </hop>  <hop> <from>preallocate output rows</from><to>parse browser, engine, platform, os, locale</to><enabled>Y</enabled> </hop>  <hop> <from>CSV file input</from><to>Filter empty rows</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>FirefoxHome, Crawlers, etc</to><enabled>N</enabled> </hop>  <hop> <from>FirefoxHome, Crawlers, etc</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>  <hop> <from>locale</from><to>FirefoxHome, Crawlers, etc</to><enabled>Y</enabled> </hop>  <hop> <from>os</from><to>platform = os category</to><enabled>Y</enabled> </hop>  <hop> <from>platform = os category</from><to>lk locale</to><enabled>Y</enabled> </hop>  <hop> <from>parse browser, engine, platform, os, locale</from><to>Sort rows</to><enabled>N</enabled> </hop>  <hop> <from>lk browser category</from><to>browser [Fuzzy] 2</to><enabled>Y</enabled> </hop>  <hop> <from>browser [Fuzzy] 2</from><to>lk os name &amp; category</to><enabled>Y</enabled> </hop>  <hop> <from>preallocate output rows</from><to>Sink</to><enabled>N</enabled> </hop>  <hop> <from>Sort rows</from><to>tokenOut</to><enabled>N</enabled> </hop>  <hop> <from>parse browser, engine, platform, os, locale</from><to>Sink</to><enabled>N</enabled> </hop>  <hop> <from>Sort rows 2</from><to>Text file output 2</to><enabled>N</enabled> </hop>  <hop> <from>FirefoxHome, Crawlers, etc</from><to>Sort rows 2</to><enabled>N</enabled> </hop>  <hop> <from>Test specific</from><to>Filter empty rows</to><enabled>N</enabled> </hop>  <hop> <from>FirefoxHome, Crawlers, etc</from><to>Filter rows</to><enabled>N</enabled> </hop>  <hop> <from>Filter rows</from><to>Dummy (do nothing) 2</to><enabled>N</enabled> </hop>  <hop> <from>Filter rows</from><to>Text file output</to><enabled>N</enabled> </hop>  </order>
+  <step>
+    <name>&quot;un-split&quot; (custom)</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>user_agent_token</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Maemo^Browser^</replace_string>
+        <replace_by_string>Maemo Browser </replace_by_string>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>user_agent_token</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Opera^</replace_string>
+        <replace_by_string>Opera </replace_by_string>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>612</xloc>
+      <yloc>110</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>CSV file input</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filename>${Internal.Transformation.Filename.Directory}&#47;userAgentsNv.txt</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>,</separator>
+    <enclosure>&quot;</enclosure>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <encoding/>
+    <fields>
+      <field>
+        <name>user_agent</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>72</xloc>
+      <yloc>274</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Dummy (do nothing) 2</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>977</xloc>
+      <yloc>1658</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Filter empty rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>user_agent</leftvalue>
+   <function>&lt;&gt;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text/><length>-1</length><precision>-1</precision><isnull>Y</isnull><mask/></value>   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>159</xloc>
+      <yloc>111</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Text file output</send_true_to>
+<send_false_to>Dummy (do nothing) 2</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>Y</negated>
+   <leftvalue>os</leftvalue>
+   <function>STARTS WITH</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>Unknown</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <conditions>
+    <condition>
+     <negated>N</negated>
+     <leftvalue>browser_name</leftvalue>
+     <function>STARTS WITH</function>
+     <rightvalue/>
+     <value><name>constant</name><type>String</type><text>Unknown</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>     </condition>
+    </conditions>
+   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>841</xloc>
+      <yloc>1656</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>FirefoxHome, Crawlers, etc</name>
+    <type>UserDefinedJavaClass</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+
+    <definitions>
+        <definition>
+        <class_type>TRANSFORM_CLASS</class_type>
+
+        <class_name>Processor</class_name>
+
+        <class_source><![CDATA[import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import org.apache.commons.lang.StringUtils;
+
+//fields
+private int userAgentIdx, browserNameIdx, osCategoryIdx, platformIdx;
+private String userAgent, browserName, osCategory, platform;
+
+private Pattern spiderPat, proxyPat, downloadUtilPat;
+private Matcher spiderMatch, proxyMatch, downloadUtilMatch;
+
+private int outputRowSize;
+
+
+
+  public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
+  {
+    Object[] row = getRow();
+    if (row == null) {
+      setOutputDone();
+      return false;
+    }
+
+    if (first) {
+      first = false;
+      data.inputRowMeta = getInputRowMeta();
+      data.outputRowMeta = data.inputRowMeta.clone();
+      meta.getFields(data.outputRowMeta, getStepname(), null, null, parent);
+      outputRowSize = data.outputRowMeta.size();
+
+      //compile patterns
+      spiderPat = Pattern.compile(parent.environmentSubstitute("${ROBOT_SPIDER_CRAWLER}"));
+      proxyPat = Pattern.compile(parent.environmentSubstitute("${PROXY}"));
+      downloadUtilPat = Pattern.compile(parent.environmentSubstitute("${DOWNLOAD_UTILITY}"));
+
+      //init matchers
+      spiderMatch = spiderPat.matcher("");
+      proxyMatch= proxyPat.matcher("");
+      downloadUtilMatch = downloadUtilPat.matcher("");
+
+      //Fields
+      userAgentIdx = data.inputRowMeta.indexOfValue("user_agent");
+      browserNameIdx = data.inputRowMeta.indexOfValue("browser_name");
+      osCategoryIdx = data.inputRowMeta.indexOfValue("os_category");
+      platformIdx = data.inputRowMeta.indexOfValue("platform");
+
+    }
+
+    row = RowDataUtil.resizeArray(row, outputRowSize);
+
+    browserName = (String) row[browserNameIdx];
+    userAgent = (String) row[userAgentIdx];
+
+    if(browserName.equals("Unknown"))
+    {//check regexes for spiders&Co
+      if(spiderMatch.reset(userAgent).matches())
+      {
+       row[browserNameIdx] = "Spider/Bot";
+      }
+      else if(proxyMatch.reset(userAgent).matches())
+      {
+       row[browserNameIdx] = "Proxy";
+      }
+      else if(downloadUtilMatch.reset(userAgent).matches())
+      {
+       row[browserNameIdx] = "Download Utility";
+      }
+    }
+    else if(browserName.equals("FirefoxHome"))
+    {//change os/platform
+      row[osCategoryIdx] = "Mobile";
+      row[platformIdx] = "iPhone/iPod/iPad";
+    }
+    //else nothing to do, just let the line go through
+    
+    putRow(data.outputRowMeta, row);
+    return true;
+  }//processRow]]></class_source>
+        </definition>
+    </definitions>
+    <fields>
+    </fields><clear_result_fields>N</clear_result_fields>
+<info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>841</xloc>
+      <yloc>1503</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Mapping input specification</name>
+    <type>MappingInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>user_agent</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+        <select_unspecified>Y</select_unspecified>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>72</xloc>
+      <yloc>44</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Mapping output specification</name>
+    <type>MappingOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1094</xloc>
+      <yloc>1503</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>user_agent</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>engine_1</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>engine_2</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>browser_name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>browser_category</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>browser_version</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>os_category</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>os</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>platform</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>locale</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>Y</select_unspecified>
+      <remove>        <name>user_agent_token</name>
+      </remove>      <remove>        <name>match_browser_name</name>
+      </remove>      <remove>        <name>match_os_name</name>
+      </remove>      <remove>        <name>match_os_version</name>
+      </remove>      <remove>        <name>platform_identified</name>
+      </remove>      <remove>        <name>match_locale</name>
+      </remove>      <remove>        <name>match_locale_extra</name>
+      </remove>      <remove>        <name>os_name</name>
+      </remove>      <remove>        <name>new_name</name>
+      </remove>      <remove>        <name>new_version</name>
+      </remove>      <remove>        <name>desc_locale</name>
+      </remove>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>848</xloc>
+      <yloc>1380</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sink</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>442</xloc>
+      <yloc>293</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>user_agent</name>
+        <ascending>N</ascending>
+        <case_sensitive>N</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>825</xloc>
+      <yloc>254</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sort rows 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>user_agent</name>
+        <ascending>N</ascending>
+        <case_sensitive>N</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>706</xloc>
+      <yloc>1683</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Test specific</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>user_agent</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <data>
+      <line> <item>Mozilla&#47;5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko&#47;20080404 Iceweasel&#47;2.0.0.14 (Debian-2.0.0.14-0etch1)</item> </line>
+      <line> <item>Mozilla&#47;5.0 (Windows; U; Windows NT 6.0; fr; rv:1.9.2.3) Gecko&#47;20100401 FirefoX&#47;3.6.3</item> </line>
+      <line> <item>Mozilla&#47;5.0 (SymbianOS&#47;9.4; U;Series60&#47;5.0 Nokia5800&#47;10.0.006;Profile&#47;MIDP-2.1 Configuration&#47;CLDC-1.1) AppleWebKit&#47;413 (KHTML, like Gecko) Safari&#47;413</item> </line>
+      <line> <item>Mozilla&#47;5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko&#47;2008070206 OLPC&#47;Firefox-6 (XO) Firefox&#47;3.0.1</item> </line>
+      <line> <item>Mozilla&#47;5.0 (Windows; U; Windows NT 5.1; de; rv:1.9.2.13) Gecko&#47;20101203 BTRS28059 (webde&#47;1.7.2) Firefox anonymized by Abelssoft 1433017337 ( .NET CLR 3.5.30729) tb-webde&#47;1.5.1</item> </line>
+      <line> <item>RSSOwl&#47;2.0.6.201010031459 (Windows; U; en)</item> </line>
+      <line> <item>Test Certificate Info</item> </line>
+      <line> <item>DoCoMo&#47;2.0 N905i(c100;TB;W24H16) (compatible; Googlebot-Mobile&#47;2.1; +http:&#47;&#47;www.google.com&#47;bot.html)</item> </line>
+      <line> <item>SAMSUNG-SGH-D900&#47;1.0 Profile&#47;MIDP-2.0 Configuration&#47;CLDC-1.1 UP.Browser&#47;6.2.3.3.c.1.101 (GUI) MMP&#47;2.0</item> </line>
+      <line> <item>Mozilla&#47;5.0 (Windows NT 5.1; rv:2.0.1) Gecko&#47;20100101 Firefox&#47;4.0.1</item> </line>
+    </data>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>171</xloc>
+      <yloc>296</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Text file output</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>;</separator>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <file>
+      <name>${Internal.Transformation.Filename.Directory}&#47;osNoBrowser</name>
+      <is_command>N</is_command>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>match_browser_name</name>
+        <type>-</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>match_browser_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>os</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>user_agent_token</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>835</xloc>
+      <yloc>1761</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Text file output 2</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>;</separator>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <file>
+      <name>${Internal.Transformation.Filename.Directory}&#47;outParseNew</name>
+      <is_command>N</is_command>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>engine_1</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>engine_2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>browser_version</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>platform</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>browser_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>browser_category</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>os_category</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>os</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>locale</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>user_agent_token</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>user_agent</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>611</xloc>
+      <yloc>1776</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Token separator</name>
+    <type>UserDefinedJavaClass</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+
+    <definitions>
+        <definition>
+        <class_type>TRANSFORM_CLASS</class_type>
+
+        <class_name>Processor</class_name>
+
+        <class_source><![CDATA[private int outputRowSize;
+private ValueMetaInterface inFieldMeta;
+private int inFieldIndex;
+private int outFieldIndex;
+
+public boolean processRow(StepMetaInterface smi, StepDataInterface sdi)
+	throws KettleException
+	{
+		Object[] r = getRow();
+		if (r == null) {
+		setOutputDone();
+		return false;
+		}
+
+		if (first) {
+			first = false;
+
+			// Set up dynamic in/out meta
+			data.inputRowMeta = getInputRowMeta();
+			data.outputRowMeta = data.inputRowMeta.clone();
+			meta.getFields(data.outputRowMeta, getStepname(), null, null, parent);
+			outputRowSize = data.outputRowMeta.size();
+
+			// Workaround for PDI-4981, FieldHelpers not working in subtrans with dyn fields
+			inFieldMeta = data.inputRowMeta.searchValueMeta("user_agent");
+			inFieldIndex = data.inputRowMeta.indexOfValue("user_agent");
+			outFieldIndex = data.outputRowMeta.indexOfValue("user_agent_token");
+		}
+
+		//  r = RowDataUtil.createResizedCopy(r, outputRowSize);
+		//TODO: check ok:
+		r = RowDataUtil.resizeArray(r, outputRowSize);
+
+			// String user_agent = get(Fields.In, "user_agent").getString(r);
+		String user_agent = inFieldMeta.getString(r[inFieldIndex]);
+
+		int len = user_agent.length();
+
+		StringBuilder user_agent_token = new StringBuilder(len);
+
+		char current=' '; //C:comment; P:product
+		int qty=0; // quantity of open '('
+		char last = '-';
+
+		for (int i=0;i<len;i++) {
+
+			char ch = user_agent.charAt(i);
+
+			switch(ch) {
+				case ')':
+					qty--;
+					if(last == '^') break;//new
+   					else if (last == ' ') user_agent_token.deleteCharAt(user_agent_token.length() - 1);//new
+					user_agent_token.append('^');
+					last = '^';//new
+					break;
+				case '(':
+					current='C';
+					qty++;
+					if(last == '^') break;//new
+   					else if (last == ' ') user_agent_token.deleteCharAt(user_agent_token.length() - 1);//new
+					user_agent_token.append('^');
+					break;
+				case ' ':
+					if (current!='C') {// space outside a comment
+						if(last == '^') break;//new
+						else if(last == ' '){
+ 							//user_agent_token.setLength( user_agent_token.length() - 1 );//delete last
+							user_agent_token.deleteCharAt(user_agent_token.length() - 1);
+						}
+						user_agent_token.append('^');
+						last = '^';//new
+					}
+					else if(last != '^') {//new if
+						user_agent_token.append(' ');
+						last = ' ';//new
+					}
+					break;
+				case ';':
+				case '[':
+				case ']':
+					if(last == '^') break;//new
+   					else if (last == ' ') user_agent_token.deleteCharAt(user_agent_token.length() - 1);//new
+					user_agent_token.append('^');
+					last = '^';//new
+					break;
+				default:
+					if ( current!= 'P' && i > 0  && qty==0 ){
+						current='P';
+					}			
+					user_agent_token.append(ch);
+					last=ch;//new
+			}
+		}
+
+		// get(Fields.Out, "user_agent_token").setValue(r, user_agent_token.toString());
+		r[outFieldIndex] = user_agent_token.toString();
+
+		putRow(data.outputRowMeta, r);
+
+		return true;
+
+	}//processRow
+]]></class_source>
+        </definition>
+    </definitions>
+    <fields>
+        <field>
+        <field_name>user_agent_token</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+    </fields><clear_result_fields>N</clear_result_fields>
+<info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>484</xloc>
+      <yloc>111</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>browser</name>
+    <type>ExcelInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield/>
+    <sheetfield/>
+    <sheetrownumfield/>
+    <rownumfield/>
+    <sheetfield/>
+    <filefield/>
+    <limit>0</limit>
+    <encoding/>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>N</accept_filenames>
+    <accept_field/>
+    <accept_stepname/>
+    <file>
+      <name>${Internal.Transformation.Filename.Directory}\tables.xls</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>browser_name</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>browser_category</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>browser_priority</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>browser</name>
+        <startrow>0</startrow>
+        <startcol>0</startcol>
+        </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory/>
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory/>
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory/>
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+    <spreadsheet_type>JXL</spreadsheet_type>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>933</xloc>
+      <yloc>454</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>browser [Fuzzy] 2</name>
+    <type>UserDefinedJavaClass</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+
+    <definitions>
+        <definition>
+        <class_type>TRANSFORM_CLASS</class_type>
+
+        <class_name>Processor</class_name>
+
+        <class_source><![CDATA[private int browserNameIdx, browserVersionIdx, validVersionIdx;
+
+	public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
+	{
+		Object[] r = getRow();
+		if (r == null) {
+			setOutputDone();
+			return false;
+		}
+
+		if (first) {
+			first = false;
+			data.inputRowMeta = getInputRowMeta();
+			data.outputRowMeta = data.inputRowMeta.clone();
+			meta.getFields(data.outputRowMeta, getStepname(), null, null, parent);
+
+			browserNameIdx = data.inputRowMeta.indexOfValue("browser_name");
+			browserVersionIdx = data.inputRowMeta.indexOfValue("browser_version");
+			validVersionIdx = data.outputRowMeta.indexOfValue("valid_version");
+		}
+		if(((Boolean)r[validVersionIdx]) == false){
+			r[browserNameIdx] = ((String) r[browserNameIdx]) + " [Fuzzy]";
+			r[browserVersionIdx] = "";
+		}
+
+		putRow(data.outputRowMeta, r);
+
+		return true;
+
+	}//processRow]]></class_source>
+        </definition>
+    </definitions>
+    <fields>
+    </fields><clear_result_fields>N</clear_result_fields>
+<info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>622</xloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>browser_name to lower</name>
+    <type>Janino</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <formula><field_name>browser_name_lower</field_name>
+<formula_string>browser_name.toLowerCase()</formula_string>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<replace_field/>
+</formula>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>780</xloc>
+      <yloc>457</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>lk browser category</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>browser_name to lower</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>N</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>match_browser_name</name>
+        <field>browser_name_lower</field>
+      </key>
+      <value>
+        <name>browser_name</name>
+        <rename>browser_name</rename>
+        <default>Unknown</default>
+        <type>String</type>
+      </value>
+      <value>
+        <name>browser_category</name>
+        <rename>browser_category</rename>
+        <default>Unknown</default>
+        <type>String</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>620</xloc>
+      <yloc>458</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>lk locale</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>locale list</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>N</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>match_locale</name>
+        <field>cod</field>
+      </key>
+      <value>
+        <name>locale</name>
+        <rename>desc_locale</rename>
+        <default>unknown</default>
+        <type>String</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>662</xloc>
+      <yloc>1295</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>lk os name &amp; category</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>ua_os_name to lower</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>N</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>match_os_name</name>
+        <field>ua_os_name_lower</field>
+      </key>
+      <value>
+        <name>os_name</name>
+        <rename>os_name</rename>
+        <default>Unknown</default>
+        <type>String</type>
+      </value>
+      <value>
+        <name>os_category</name>
+        <rename>os_category</rename>
+        <default>Unknown</default>
+        <type>String</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>632</xloc>
+      <yloc>795</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>lk replacements</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>os_version list</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>N</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>os_name</name>
+        <field>found_os</field>
+      </key>
+      <key>
+        <name>match_os_version</name>
+        <field>found_version</field>
+      </key>
+      <value>
+        <name>new_name</name>
+        <rename>new_name</rename>
+        <default/>
+        <type>String</type>
+      </value>
+      <value>
+        <name>new_version</name>
+        <rename>new_version</rename>
+        <default/>
+        <type>String</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>630</xloc>
+      <yloc>898</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>locale</name>
+    <type>UserDefinedJavaClass</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+
+    <definitions>
+        <definition>
+        <class_type>TRANSFORM_CLASS</class_type>
+
+        <class_name>Processor</class_name>
+
+        <class_source><![CDATA[private static final String UNKNOWN = "unknown";
+
+private int localeIdx, //out
+      descLocaleIdx, matchLocaleIdx, matchLocaleExtraIdx;//in
+private String locale, desc_locale, match_locale, match_locale_extra;
+private int outputRowSize;
+
+//(desc_locale.equals("unknown"))?"unknown": match_locale+(match_locale_extra==null?"":match_locale_extra)
+
+  public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
+  {
+    Object[] r = getRow();
+    if (r == null) {
+      setOutputDone();
+      return false;
+    }
+
+    if (first) {
+      first = false;
+      data.inputRowMeta = getInputRowMeta();
+      data.outputRowMeta = data.inputRowMeta.clone();
+      meta.getFields(data.outputRowMeta, getStepname(), null, null, parent);
+      outputRowSize = data.outputRowMeta.size();
+
+      descLocaleIdx = data.inputRowMeta.indexOfValue("desc_locale");
+      matchLocaleIdx = data.inputRowMeta.indexOfValue("match_locale");
+      matchLocaleExtraIdx = data.inputRowMeta.indexOfValue("match_locale_extra");
+
+      localeIdx = data.outputRowMeta.indexOfValue("locale");
+    }
+
+    r = RowDataUtil.resizeArray(r, outputRowSize);
+
+    desc_locale = (String) r[descLocaleIdx];
+    match_locale = (String) r[matchLocaleIdx];
+    match_locale_extra = (String) r[matchLocaleExtraIdx];
+
+    if(desc_locale.equals(UNKNOWN))
+    {
+      r[localeIdx] = UNKNOWN;
+    }
+    else
+    {
+      if(match_locale_extra == null) match_locale_extra = "";
+      r[localeIdx] = match_locale + match_locale_extra;
+    }
+
+   // r[localeIdx] = (desc_locale.equals("unknown"))?"unknown": match_locale+(match_locale_extra==null?"":match_locale_extra);
+    putRow(data.outputRowMeta, r);
+
+    return true;
+
+  }//processRow]]></class_source>
+        </definition>
+    </definitions>
+    <fields>
+        <field>
+        <field_name>locale</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+    </fields><clear_result_fields>N</clear_result_fields>
+<info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>662</xloc>
+      <yloc>1377</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>locale list</name>
+    <type>ExcelInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield/>
+    <sheetfield/>
+    <sheetrownumfield/>
+    <rownumfield/>
+    <sheetfield/>
+    <filefield/>
+    <limit>0</limit>
+    <encoding/>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>N</accept_filenames>
+    <accept_field/>
+    <accept_stepname/>
+    <file>
+      <name>${Internal.Transformation.Filename.Directory}\tables.xls</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>cod</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>locale</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>locale</name>
+        <startrow>0</startrow>
+        <startcol>0</startcol>
+        </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory/>
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory/>
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory/>
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+    <spreadsheet_type>JXL</spreadsheet_type>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>847</xloc>
+      <yloc>1292</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>os</name>
+    <type>UserDefinedJavaClass</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+
+    <definitions>
+        <definition>
+        <class_type>TRANSFORM_CLASS</class_type>
+
+        <class_name>Processor</class_name>
+
+        <class_source><![CDATA[import org.apache.commons.lang.StringUtils;
+//in
+private int osNameIdx, matchOSVersionIdx, newNameIdx, newVersionIdx;
+private String osName, matchOSVersion, newName, newVersion;
+//out
+private int osIdx;
+private int outputRowSize;
+
+//(new_name.equals("keep_old"))?(os_name+" "+((match_os_version==null)?"":match_os_version)):new_name+" "+(new_version==null?"":new_version)
+
+	public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
+	{
+		Object[] r = getRow();
+		if (r == null) {
+			setOutputDone();
+			return false;
+		}
+
+		if (first) {
+			first = false;
+			//in
+			data.inputRowMeta = getInputRowMeta();
+			osNameIdx = data.inputRowMeta.indexOfValue("os_name");
+			matchOSVersionIdx = data.inputRowMeta.indexOfValue("match_os_version");
+			newNameIdx = data.inputRowMeta.indexOfValue("new_name");
+			newVersionIdx = data.inputRowMeta.indexOfValue("new_version");
+
+			//out
+			data.outputRowMeta = data.inputRowMeta.clone();
+			meta.getFields(data.outputRowMeta, getStepname(), null, null, parent);
+			osIdx = data.outputRowMeta.indexOfValue( "os" );
+			outputRowSize = data.outputRowMeta.size();
+		}
+		
+		r = RowDataUtil.resizeArray(r, outputRowSize);
+
+		//in
+		osName = (String) r[osNameIdx];
+		matchOSVersion = (String) r[matchOSVersionIdx];
+		newName = (String) r[newNameIdx];
+		newVersion = (String) r[newVersionIdx];
+		
+		//set OS
+		if(StringUtils.isEmpty(newName))
+		{
+			if(!StringUtils.isEmpty(matchOSVersion)){
+				osName += " " + matchOSVersion;
+			}
+			r[osIdx] = osName;
+		}
+		else
+		{
+			if(!StringUtils.isEmpty(newVersion)){
+				newName += " " + newVersion;
+			}
+			r[osIdx] = newName;
+		}
+
+		putRow(data.outputRowMeta, r);
+
+		return true;
+
+	}//processRow]]></class_source>
+        </definition>
+    </definitions>
+    <fields>
+        <field>
+        <field_name>os</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+    </fields><clear_result_fields>N</clear_result_fields>
+<info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>565</xloc>
+      <yloc>971</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>os list</name>
+    <type>ExcelInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield/>
+    <sheetfield/>
+    <sheetrownumfield/>
+    <rownumfield/>
+    <sheetfield/>
+    <filefield/>
+    <limit>0</limit>
+    <encoding/>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>N</accept_filenames>
+    <accept_field/>
+    <accept_stepname/>
+    <file>
+      <name>${Internal.Transformation.Filename.Directory}\tables.xls</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>ua_os_name</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>os_name</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>os_category</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>os_priority</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>os</name>
+        <startrow>0</startrow>
+        <startcol>0</startcol>
+        </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory/>
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory/>
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory/>
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+    <spreadsheet_type>JXL</spreadsheet_type>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>914</xloc>
+      <yloc>794</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>os_version list</name>
+    <type>ExcelInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield/>
+    <sheetfield/>
+    <sheetrownumfield/>
+    <rownumfield/>
+    <sheetfield/>
+    <filefield/>
+    <limit>0</limit>
+    <encoding/>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>N</accept_filenames>
+    <accept_field/>
+    <accept_stepname/>
+    <file>
+      <name>${Internal.Transformation.Filename.Directory}\tables.xls</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>found_os</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>found_version</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>new_name</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>new_version</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>os_version</name>
+        <startrow>0</startrow>
+        <startcol>0</startcol>
+        </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory/>
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory/>
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory/>
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+    <spreadsheet_type>JXL</spreadsheet_type>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>797</xloc>
+      <yloc>894</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>parse browser, engine, platform, os, locale</name>
+    <type>UserDefinedJavaClass</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+
+    <definitions>
+        <definition>
+        <class_type>TRANSFORM_CLASS</class_type>
+
+        <class_name>Processor</class_name>
+
+        <class_source><![CDATA[import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import org.apache.commons.lang.StringUtils;
+import java.text.MessageFormat;
+import java.util.Map;
+import java.util.LinkedHashMap;
+
+/////////////////////////////////////////////////////////////
+//WARNING: MAIN CYCLE SHOULD BE REVIEWED WHEN .XLS CHANGES //
+//      CAUSE DIFFERENT FIELDS TO MATCH SAME STRING        //
+/////////////////////////////////////////////////////////////
+
+private static String SEPARATOR = "^";
+private static String UNKNOWN = "Unknown";//change name if CORBA is imported :)
+private static String PLATFORM_UNKNOWN = "Other";
+
+//to trim from version begin
+private static String[] VERSION_PREFIX_TRIM = { "/", "-", ":", " "};
+
+//FIELDS
+private int userAgentIdx, 
+            engine1idx,engine2idx,
+            browserName1Idx, browserVersion1Idx,
+            osNameIdx, osVersionIdx,
+            platformIdx, platformIdentifiedIdx,
+            localeMainIdx, localeExtraIdx,
+            validVersionIdx;
+
+//MATCHING
+private Pattern validVersionPattern; 
+private Matcher validVersionMatcher;
+private Matcher engineMatcher1, engineMatcher2,
+                browserMatcher1, browserMatcher2,
+                osMatcher1, osMatcher2,
+                platformMatcher,
+                localeMatcher;
+private Pattern enginePattern1, enginePattern2,
+                browserPattern1, browserPattern2,
+                osPattern1, osPattern2,
+                platformPattern,
+                localePattern;
+private String user_agent, 
+               engine1, engine2,
+               browserName1, browserVersion1, browserName2, browserVersion2,
+               osName1, osVersion1, osName2, osVersion2,
+               platform,
+               localeMain, localeExtra;
+private String[] tokens;
+
+//simple cache
+private static final int CACHE_SIZE = 15000;  
+private static final float CACHE_LOAD_FACTOR = 0.7f;  
+      
+private Map cache;
+
+  public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
+  {
+    Object[] r = getRow();
+    if (r == null) {
+      setOutputDone();
+      return false;
+    }
+
+    if (first) {
+      first = false;
+      data.inputRowMeta = getInputRowMeta();
+      data.outputRowMeta = data.inputRowMeta.clone();
+      meta.getFields(data.outputRowMeta, getStepname(), null, null, parent);
+
+      //get field indexes
+      userAgentIdx = data.inputRowMeta.indexOfValue("user_agent_token");
+
+      engine1idx = data.outputRowMeta.indexOfValue("engine_1");
+      engine2idx = data.outputRowMeta.indexOfValue("engine_2");
+
+      browserName1Idx = data.outputRowMeta.indexOfValue("match_browser_name");
+      browserVersion1Idx = data.outputRowMeta.indexOfValue("browser_version");
+
+      osNameIdx = data.outputRowMeta.indexOfValue("match_os_name");
+      osVersionIdx = data.outputRowMeta.indexOfValue("match_os_version");
+
+      platformIdx = data.outputRowMeta.indexOfValue("platform");
+      platformIdentifiedIdx = data.outputRowMeta.indexOfValue("platform_identified");//boolean, all others are strings
+
+      localeMainIdx = data.outputRowMeta.indexOfValue("match_locale");
+      localeExtraIdx = data.outputRowMeta.indexOfValue("match_locale_extra");
+
+      validVersionIdx = data.outputRowMeta.indexOfValue("valid_version");
+
+      //compile patterns
+      enginePattern1 = Pattern.compile(parent.environmentSubstitute("(?:${ENGINE_LIST})(?:.*)"));
+      enginePattern2 = Pattern.compile(parent.environmentSubstitute("(?:${ENGINE_LIST_2ND})(?:.*)"));
+
+      browserPattern1 = Pattern.compile(parent.environmentSubstitute("(?i)(${BROWSER_LIST})(.*)"));
+      browserPattern2 = Pattern.compile(parent.environmentSubstitute("(?i)(${BROWSER_LIST_2ND})(.*)"));
+
+      osPattern1 = Pattern.compile(parent.environmentSubstitute("(?i)(${OS_LIST})(.*)"));
+      osPattern2 = Pattern.compile(parent.environmentSubstitute("(?i)(${OS_LIST_2ND})(.*)"));
+
+      platformPattern = Pattern.compile(parent.environmentSubstitute("(?:${PLATFORM_LIST})(?:.*)"));
+
+      validVersionPattern = Pattern.compile("^v?[0-9].*");
+
+      localePattern = Pattern.compile("([a-zA-Z][a-zA-Z])(\-[a-zA-Z][a-zA-Z])?");
+
+      //init matchers
+      engineMatcher1 = enginePattern1.matcher("");
+      engineMatcher2 = enginePattern2.matcher("");
+      browserMatcher1 = browserPattern1.matcher("");
+      browserMatcher2 = browserPattern2.matcher("");
+      osMatcher1 = osPattern1.matcher("");
+      osMatcher2 = osPattern2.matcher("");
+      platformMatcher = platformPattern.matcher("");
+      validVersionMatcher = validVersionPattern.matcher("");
+      localeMatcher = localePattern.matcher("");
+
+	cache = new LinkedHashMap(CACHE_SIZE, CACHE_LOAD_FACTOR, true) {  //TODO: change 
+ 			 	protected boolean removeEldestEntry(Map.Entry eldest) {  
+    				return size() > CACHE_SIZE;  
+  				}
+			};  
+
+      //info
+      logMinimal( MessageFormat.format("Out Indexes--> engine1:{0}, engine2:{1}, browserName:{2}, browserVersion:{3},os name {4}, os version {5}, platform {6}, platId? {7}, locale{8}, locExtra {9} ", 
+                               new Integer[]{engine1idx, engine2idx, browserName1Idx, browserVersion1Idx, osNameIdx, osVersionIdx, platformIdx, platformIdentifiedIdx, localeMainIdx, localeExtraIdx}));
+    }
+
+    //resize if needed
+    r = RowDataUtil.resizeArray(r, data.outputRowMeta.size());
+
+    user_agent = (String) r[userAgentIdx];
+
+    //check cache
+    Object[] cacheRow = (Object[]) cache.get(user_agent);
+
+    if(cacheRow != null)
+    { // \o/ in cache!
+      
+      r[engine1idx] = cacheRow[0];
+      r[engine2idx] = cacheRow[1];
+      r[browserName1Idx] = cacheRow[2];
+      r[browserVersion1Idx] = cacheRow[3];
+      r[osNameIdx] = cacheRow[4];
+      r[osVersionIdx] = cacheRow[5];
+      r[platformIdx] = cacheRow[6];
+      r[platformIdentifiedIdx] = cacheRow[7];
+      r[localeMainIdx] = cacheRow[8];
+      r[localeExtraIdx] = cacheRow[9];
+      r[validVersionIdx] =  cacheRow[10];
+
+      putRow(data.outputRowMeta, r);
+      return true;
+    }
+
+
+    tokens= StringUtils.split(user_agent, '^');
+
+    boolean matchedEng1=false, matchedEng2=false,
+            matchedBro1=false, matchedBro2=false,
+            matchedOS1 = false, matchedOS2 = false,
+            matchedPlat =false,
+            matchedLoc = false, skipOnceAfterPlatform=false;;
+
+    //clear fields
+    engine1 = engine2 = 
+    browserName1 = browserName2 = browserVersion1 = browserVersion2 = 
+    osName1 = osName2 = osVersion1 = osVersion2 = 
+    platform = localeMain = localeExtra = StringUtils.EMPTY;//split
+
+    //traverse user agent tokens in search for elements
+    String tok;
+    for(int i = tokens.length -1; i >= 0; i--){ //reverse traverse our tokens as best browser match tends to be towards the end
+
+      //We want both engines if possible, in other cases second version is a fallback
+      // engine and browser may be the same, other tokens are assumed to be exclusive CHANGE CYCLE IF THESE ASSUMPTIONS FAIL
+
+      tok = tokens[i];
+
+      if(matchedOS1 && matchedPlat && matchedLoc && matchedEng2 && matchedEng1 && matchedBro1) break;
+
+      //BROWSER
+      //for NetFront, engine and browser might be the same
+      if(!matchedBro1 && browserMatcher1.reset(tok).matches()){
+        matchedBro1 = true;
+        browserName1 = browserMatcher1.group(1).toLowerCase();
+        browserVersion1 = browserMatcher1.group(2);
+          //prev step: "clean versions (remove first "/", "-", ":")"
+          //if(StringUtils.startsWithAny(browserVersion1, VERSION_PREFIX_TRIM)){ <-- commons 2.5
+        for(int j=0; j< VERSION_PREFIX_TRIM.length; j++){
+          if(StringUtils.startsWith(browserVersion1, VERSION_PREFIX_TRIM[j])){
+            browserVersion1 = StringUtils.substring(browserVersion1, 1);
+          }
+        }
+        if(matchedEng1 && matchedPlat)  continue;
+        else skipOnceAfterPlatform=true;
+      }
+      else if(!matchedBro2 && browserMatcher2.reset(tok).matches()){
+        matchedBro2 = true;
+        browserName2 = browserMatcher2.group(1).toLowerCase();
+        browserVersion2 = browserMatcher2.group(2);
+        //prev step: "clean versions (remove first "/", "-", ":")"
+        for(int j=0; j< VERSION_PREFIX_TRIM.length; j++){
+          if(StringUtils.startsWith(browserVersion2, VERSION_PREFIX_TRIM[j])){
+            browserVersion2 = StringUtils.substring(browserVersion2, 1);
+          }
+        }
+        continue;
+      }
+
+      //ENGINE
+      if(!matchedEng1 && engineMatcher1.reset(tok).matches()){
+        matchedEng1=true;
+        engine1= tok;
+        continue;
+      }
+      else if(!matchedEng2 && engineMatcher2.reset(tok).matches()){
+        matchedEng2=true;
+        engine2=tok;
+        continue;
+      }
+
+      //PLATFORM
+      if(!matchedPlat && platformMatcher.reset(tok).matches()){
+        matchedPlat = true;
+        platform = tok;
+        continue;
+      }
+
+      if(skipOnceAfterPlatform) {
+        skipOnceAfterPlatform = false;
+        continue;
+      }
+
+      //LOCALE
+      if(!matchedLoc && localeMatcher.reset(tok).matches()){
+        localeMain = localeMatcher.group(1);
+        localeExtra = localeMatcher.group(2);
+        //if we don't have both letter pairs, don't assume we got the right one
+        if(localeExtra != null) matchedLoc = true;
+        continue;
+      }
+
+      //OS
+      if(!matchedOS1 && osMatcher1.reset(tok).matches()){
+        matchedOS1 = true;
+        osName1 = osMatcher1.group(1).toLowerCase().trim();
+        osVersion1 = osMatcher1.group(2).trim();
+      }
+      else if(!matchedOS2 && osMatcher2.reset(tok).matches()){
+        matchedOS2 = true;
+        osName2 = osMatcher2.group(1).toLowerCase().trim();
+        osVersion2 = osMatcher2.group(2).trim();
+      }
+
+    }//for
+    
+    //engine 1
+    if(matchedEng1) r[engine1idx] = engine1;
+    else r[engine1idx] = UNKNOWN;
+    //engine 2
+    if(matchedEng2) r[engine2idx] = engine2;
+    else r[engine2idx] = UNKNOWN;
+
+    //browser name, version (either 1 or 2) //prev steps: "browser_name unknown?", "browser II"
+    if(matchedBro1){ 
+      r[browserName1Idx] = browserName1;
+      r[browserVersion1Idx] = browserVersion1;
+      r[validVersionIdx] = validVersionMatcher.reset(browserVersion1).matches();
+    
+    }
+    else if(matchedBro2) {
+      r[browserName1Idx] = browserName2;
+      r[browserVersion1Idx] = browserVersion2;
+      r[validVersionIdx] = validVersionMatcher.reset(browserVersion2).matches();
+    }
+    else {//uknown
+      r[browserName1Idx] = browserName2;
+      r[browserVersion1Idx] = browserVersion2;
+      r[validVersionIdx] = true;
+    }
+
+    //OS name, version
+    if(matchedOS1) {
+      r[osNameIdx] = osName1;
+      r[osVersionIdx] = osVersion1;
+    }
+    else {
+      //2 to 1, empty ok
+      r[osNameIdx] = osName2;
+      r[osVersionIdx] = osVersion2;
+    }
+
+    //Platform
+    r[platformIdentifiedIdx] = (Boolean) matchedPlat;
+    r[platformIdx] = matchedPlat ? platform : PLATFORM_UNKNOWN;
+
+    //locale
+    r[localeMainIdx] = localeMain;
+    r[localeExtraIdx] = localeExtra;
+
+
+    //store in cache
+	cacheRow = new Object[11];
+      cacheRow[0] = r[engine1idx];
+      cacheRow[1] = r[engine2idx];
+      cacheRow[2] = r[browserName1Idx];
+      cacheRow[3] = r[browserVersion1Idx];
+      cacheRow[4] = r[osNameIdx];
+      cacheRow[5] = r[osVersionIdx];
+      cacheRow[6] = r[platformIdx];
+      cacheRow[7] = r[platformIdentifiedIdx];
+      cacheRow[8] = r[localeMainIdx];
+      cacheRow[9] = r[localeExtraIdx];
+      cacheRow[10] = r[validVersionIdx];
+    cache.put(user_agent, cacheRow);
+
+    putRow(data.outputRowMeta, r);
+
+    return true;
+
+  }//processRow]]></class_source>
+        </definition>
+    </definitions>
+    <fields>
+    </fields><clear_result_fields>N</clear_result_fields>
+<info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>612</xloc>
+      <yloc>344</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>platform = os category</name>
+    <type>UserDefinedJavaClass</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+
+    <definitions>
+        <definition>
+        <class_type>TRANSFORM_CLASS</class_type>
+
+        <class_name>Processor</class_name>
+
+        <class_source><![CDATA[
+private int platformIdx, osCategoryIdx, platformIdentifiedIdx ;
+
+	public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
+	{
+		Object[] r = getRow();
+		if (r == null) {
+			setOutputDone();
+			return false;
+		}
+
+		if (first) {
+			first = false;
+			data.inputRowMeta = getInputRowMeta();
+			data.outputRowMeta = data.inputRowMeta.clone();
+			meta.getFields(data.outputRowMeta, getStepname(), null, null, parent);
+
+			platformIdx = data.inputRowMeta.indexOfValue("platform");
+			platformIdentifiedIdx = data.inputRowMeta.indexOfValue("platform_identified");
+			osCategoryIdx = data.inputRowMeta.indexOfValue("os_category");
+		}
+		
+		// platform not found && is windows or mac?)
+		if( ((Boolean)r[platformIdentifiedIdx]) == false && (r[osCategoryIdx].equals("Windows") || r[osCategoryIdx].equals("Macintosh"))){
+			r[platformIdx] = r[osCategoryIdx];
+        }
+
+		putRow(data.outputRowMeta, r);
+
+		return true;
+
+	}//processRow]]></class_source>
+        </definition>
+    </definitions>
+    <fields>
+    </fields><clear_result_fields>N</clear_result_fields>
+<info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>570</xloc>
+      <yloc>1107</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>preallocate output rows</name>
+    <type>UserDefinedJavaClass</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+
+    <definitions>
+        <definition>
+        <class_type>TRANSFORM_CLASS</class_type>
+
+        <class_name>Processor</class_name>
+
+        <class_source><![CDATA[private int outputRowSize;
+
+	public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
+	{
+		Object[] r = getRow();
+		if (r == null) {
+			setOutputDone();
+			return false;
+		}
+
+		if (first) {
+			first = false;
+			data.inputRowMeta = getInputRowMeta();
+			data.outputRowMeta = data.inputRowMeta.clone();
+			meta.getFields(data.outputRowMeta, getStepname(), null, null, parent);
+			outputRowSize = data.outputRowMeta.size();
+		}
+
+		putRow(data.outputRowMeta, RowDataUtil.resizeArray(r, outputRowSize));
+
+		return true;
+
+	}//processRow]]></class_source>
+        </definition>
+    </definitions>
+    <fields>
+        <field>
+        <field_name>engine_1</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+        <field>
+        <field_name>engine_2</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+        <field>
+        <field_name>match_browser_name</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+        <field>
+        <field_name>browser_version</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+        <field>
+        <field_name>match_os_name</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+        <field>
+        <field_name>match_os_version</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+        <field>
+        <field_name>platform</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+        <field>
+        <field_name>platform_identified</field_name>
+
+        <field_type>Boolean</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+        <field>
+        <field_name>match_locale</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+        <field>
+        <field_name>match_locale_extra</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+        <field>
+        <field_name>valid_version</field_name>
+
+        <field_type>Boolean</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+    </fields><clear_result_fields>N</clear_result_fields>
+<info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>609</xloc>
+      <yloc>249</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>removing non-printable</name>
+    <type>UserDefinedJavaClass</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+
+    <definitions>
+        <definition>
+        <class_type>TRANSFORM_CLASS</class_type>
+
+        <class_name>Processor</class_name>
+
+        <class_source><![CDATA[import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+private static String REGEX = "[\\p{Cntrl}]+";
+private static String FIELD_NAME = "user_agent";
+
+//private ValueMetaInterface inFieldMeta;
+private int fieldIndex;
+private Matcher matcher;
+private Pattern pattern;
+
+public boolean processRow(StepMetaInterface smi, StepDataInterface sdi)
+	throws KettleException
+	{
+		Object[] r = getRow();
+		if (r == null) {
+			setOutputDone();
+			return false;
+		}
+
+		String user_agent = null;
+
+		if (first) {
+			first = false;
+			data.inputRowMeta = getInputRowMeta();
+			data.outputRowMeta = data.inputRowMeta.clone();
+			meta.getFields(data.outputRowMeta, getStepname(), null, null, parent);
+			// Workaround for PDI-4981, FieldHelpers not working in subtrans with dyn fields
+			//inFieldMeta = data.inputRowMeta.searchValueMeta(FIELD_NAME);
+			fieldIndex = data.inputRowMeta.indexOfValue(FIELD_NAME);
+			pattern = Pattern.compile(REGEX);
+			//user_agent = (String) r[fieldIndex];//inFieldMeta.getString(r[fieldIndex]);
+			//matcher = pattern.matcher(user_agent);
+		}
+		//else {
+		//	user_agent = (String) r[fieldIndex];//inFieldMeta.getString(r[fieldIndex]);
+		//	matcher.reset(user_agent);
+			
+		//}
+		user_agent = (String) r[fieldIndex];
+		matcher = pattern.matcher(user_agent);
+		r[fieldIndex] = matcher.replaceAll("");
+		putRow(data.outputRowMeta, r);
+
+		return true;
+
+	}//processRow]]></class_source>
+        </definition>
+    </definitions>
+    <fields>
+    </fields><clear_result_fields>N</clear_result_fields>
+<info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>326</xloc>
+      <yloc>111</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>tokenOut</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>;</separator>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <file>
+      <name>${Internal.Transformation.Filename.Directory}&#47;tokenOut</name>
+      <is_command>N</is_command>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>user_agent_token</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>user_agent</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>849</xloc>
+      <yloc>125</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>ua_os_name to lower</name>
+    <type>Janino</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <formula><field_name>ua_os_name_lower</field_name>
+<formula_string>ua_os_name.toLowerCase()</formula_string>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<replace_field/>
+</formula>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>806</xloc>
+      <yloc>796</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step_error_handling>
+  </step_error_handling>
+   <slave-step-copy-partition-distribution>
+</slave-step-copy-partition-distribution>
+   <slave_transformation>N</slave_transformation>
+</transformation>
