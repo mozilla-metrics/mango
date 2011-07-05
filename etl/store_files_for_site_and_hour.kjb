@@ -239,9 +239,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
       <type>WRITE_TO_LOG</type>
       <logmessage>
 ========================
-Processing:
-Site: ${site_name}
-Date: ${file_timestamp}
+Processing ${site_name}, ${file_timestamp}
 ========================</logmessage>
       <loglevel>Basic</loglevel>
       <logsubject>Begin processing</logsubject>
