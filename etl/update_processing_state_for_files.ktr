@@ -119,6 +119,30 @@ the terms of any one of the MPL, the GPL or the LGPL.
   <notepads>
   </notepads>
   <connection>
+    <name>Hive</name>
+    <server/>
+    <type>GENERIC</type>
+    <access>Native</access>
+    <database/>
+    <port>1521</port>
+    <username/>
+    <password>Encrypted </password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>org.apache.hadoop.hive.jdbc.HiveDriver</attribute></attribute>
+      <attribute><code>CUSTOM_URL</code><attribute>jdbc:hive:&#47;&#47;hm-admin03.scl2.mozilla.com:10000&#47;default</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>1521</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
     <name>mango mysql</name>
     <server>${MANGO_MYSQL_HOST}</server>
     <type>MYSQL</type>
