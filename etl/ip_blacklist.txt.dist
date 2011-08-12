@@ -1,5 +1,6 @@
-# This is a comment.
-# to convert ranges to cidr http://ip2cidr.com/
+# This is a comment.  Do not put slashes in comments.
+# Start comments in column 0, will not work at the end of an otherwise valid line.
+# to convert ranges to cidr go to ip2cidr.com
 5.5.5.5
 # example: 192.168.0.32 - 192.168.0.63:
 192.168.0.32/27
