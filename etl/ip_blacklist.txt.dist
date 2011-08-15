@@ -1,6 +1,9 @@
-# This is a comment.  Do not put slashes in comments.
-# Start comments in column 0, will not work at the end of an otherwise valid line.
+# This is a comment.  
+# NOTE: There is a bug in PDI that might cause trouble with slashes inside comments.
+#       The same bug causes trouble with comments that don't start in column 0.
 # to convert ranges to cidr go to ip2cidr.com
+
+# example: a specific IP address:
 5.5.5.5
 # example: 192.168.0.32 - 192.168.0.63:
 192.168.0.32/27
