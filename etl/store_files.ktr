@@ -784,6 +784,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
           <parameters>    <inherit_all_vars>Y</inherit_all_vars>
     </parameters>
     </mappings>
+    <allow_multiple_input>N</allow_multiple_input>
+    <allow_multiple_output>N</allow_multiple_output>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>202</xloc>
@@ -826,6 +828,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
           <parameters>    <inherit_all_vars>Y</inherit_all_vars>
     </parameters>
     </mappings>
+    <allow_multiple_input>N</allow_multiple_input>
+    <allow_multiple_output>N</allow_multiple_output>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>654</xloc>
@@ -955,7 +959,7 @@ private Configuration config;
 
 private HashMap writers = new HashMap();
 
-private static final String BLACKLIST_FLAG="\tblacklisted";
+private static final String BLACKLIST_FLAG="blacklisted";
 
 int site_nameIdx, utc_dateIdx, utc_hourIdx, runtimeIdx, not_in_blacklistIdx,
     common_pathIdx, short_filenameIdx, linenumIdx, utc_timestampIdx, client_timestampIdx,
@@ -1150,7 +1154,7 @@ import java.io.OutputStreamWriter;
 import org.apache.commons.vfs.FileObject;
 import org.pentaho.di.core.vfs.KettleVFS;
 
-private static final String BLACKLIST_FLAG="\tblacklisted";
+private static final String BLACKLIST_FLAG="blacklisted";
 
 private HashMap writers = new HashMap();
 
